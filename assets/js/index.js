@@ -18,28 +18,6 @@ function initLoader() {
       scroll.stop();
    }, null, 0);
 
-
-  
-
-   tl.to(".transition-words",{
-      yPercent: -50,
-      duration: 0,
-      ease: "Power4.easeInOut",
-      delay: 0,
-   });
-
-   tl.to(".transition-screen",{
-      yPercent: -100,
-      duration: 0.2,
-      ease: "Expo.easeInOut",
-   },"<");
-
-   tl.to(".transition-screen-inner", {
-      yPercent: 100,
-      duration: 0.2,
-      ease: "Expo.easeInOut"
-   },"<");
-
    tl.to(".transition-screen-duplicate", {
       yPercent: -100,
       duration: 1.4,
@@ -51,28 +29,6 @@ function initLoader() {
       duration: 1.4,
       ease: "Expo.easeInOut",
    },"<"); 
-
-   
-
-   tl.call(function() {
-      // Activated loader words
-      $('.transition-words').each(function () {
-         let transitionWordsCycle;
-         var transitionSingleWord = $(this);
-         transitionWordsCycle = setInterval(cycleThroughWords, 130);
-
-         function cycleThroughWords() {
-            if(transitionSingleWord.find('[data-transition-word-status="active"]').next().length > 0) {
-               transitionSingleWord.find('[data-transition-word-status="active"]').attr('data-transition-word-status', 'not-active').next().attr('data-transition-word-status', 'active');
-            } else {
-               clearInterval(transitionWordsCycle);
-               gsap.set("html", { 
-                  cursor: "auto"
-               });
-            }
-         }
-      });
-   }, null, 0);
 
    tl.call(function() {
       pageTransitionOut();
@@ -86,7 +42,6 @@ function initLoader() {
       $('[data-transition-status="loading"]').attr('data-transition-status', 'transition');
       $('.transition-container').find('.loading-remove').remove();
    }, null, 3);
-
 
    // tl.call(function() {
    //    if(document.querySelector('.home-header .placeholder-mobile video')) {
@@ -105,6 +60,7 @@ function initLoader() {
    // }, null, 2.15);
 
 }
+
 
 // Animation - Page Leave
 function pageTransitionIn() {
@@ -473,10 +429,10 @@ function initBasicFunctions() {
    });
 
    // Change Loader Text
-   $('[data-transition-text]').click(function(){
-      let dataTransitionText = $(this).data('transition-text');
-      $('.transition-words span').text(dataTransitionText);
-   });
+   // $('[data-transition-text]').click(function(){
+   //    let dataTransitionText = $(this).data('transition-text');
+   //    $('.transition-words span').text(dataTransitionText);
+   // });
 
    // Remove Scroll on Scroll Click
    $('.home-header [data-cursor-bubble-text]').click(function(){
